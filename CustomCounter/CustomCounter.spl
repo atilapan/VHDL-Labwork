@@ -1,0 +1,10 @@
+[Inputs]
+Reset
+Load
+Clk
+Mode
+=D[3:0]=
+=Increment[2:0]=
+[Outputs]
+=Q[3:0]=
+[BiDir]

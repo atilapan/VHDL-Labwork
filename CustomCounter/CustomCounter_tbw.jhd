@@ -1,0 +1,3 @@
+MODULE CustomCounter_tbw
+SUBMODULE CustomCounter
+INSTANCE UUT

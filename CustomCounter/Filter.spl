@@ -1,0 +1,6 @@
+[Inputs]
+FilterClk
+FilterIn
+[Outputs]
+FilterOut
+[BiDir]
