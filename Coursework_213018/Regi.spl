@@ -1,0 +1,8 @@
+[Inputs]
+Clk
+Reset
+Load
+=Input[3:0]=
+[Outputs]
+=Output[3:0]=
+[BiDir]

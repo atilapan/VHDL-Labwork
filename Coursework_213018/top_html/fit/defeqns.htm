@@ -1,0 +1,175 @@
+<html><head><link type='text/css' href='style.css' rel='stylesheet'></head><body class='pgBgnd'>
+<h3 align='center'>Equations</h3>
+<table width='90%' align='center' border='1' cellpadding='0' cellspacing='0'>
+<tr><td>
+</td></tr><tr><td>
+********** Mapped Logic **********
+</td></tr><tr><td>
+</td></tr><tr><td>
+N_PZ_106 <= (Load AND Reset);
+</td></tr><tr><td>
+FDCPE_Output0: FDCPE port map (Output(0),'0',XLXN_1,Output_CLR(0),Output_PRE(0),'1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_CLR(0) <= (NOT Load AND NOT Input(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_PRE(0) <= (NOT XLXI_3/_or00031 AND NOT N_PZ_106);
+</td></tr><tr><td>
+FDCPE_Output1: FDCPE port map (Output(1),Output(0),XLXN_1,Output_CLR(1),Output_PRE(1),'1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_CLR(1) <= (NOT Load AND NOT Input(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_PRE(1) <= (NOT N_PZ_106 AND NOT XLXI_3/_or00021);
+</td></tr><tr><td>
+FDCPE_Output2: FDCPE port map (Output(2),Output(1),XLXN_1,Output_CLR(2),Output_PRE(2),'1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_CLR(2) <= (NOT Load AND NOT Input(2));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_PRE(2) <= (NOT N_PZ_106 AND NOT XLXI_3/_or00011);
+</td></tr><tr><td>
+</td></tr><tr><td>
+Output(3) <= Output(3)_BUFR;
+</td></tr><tr><td>
+FDCPE_Output3_BUFR: FDCPE port map (Output(3)_BUFR,Output(2),XLXN_1,Output_CLR(3)_BUFR,Output_PRE(3)_BUFR,'1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_CLR(3)_BUFR <= (NOT Load AND NOT Input(3));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_PRE(3)_BUFR <= (NOT N_PZ_106 AND NOT XLXI_3/_or00001);
+</td></tr><tr><td>
+FDCPE_XLXI_2/FilterCount0: FDCPE port map (XLXI_2/FilterCount(0),XLXI_2/FilterCount_D(0),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_D(0) <= (NOT XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001);
+</td></tr><tr><td>
+FDCPE_XLXI_2/FilterCount1: FDCPE port map (XLXI_2/FilterCount(1),XLXI_2/FilterCount_D(1),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_D(1) <= ((XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_2/FilterCount(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(1)));
+</td></tr><tr><td>
+FTCPE_XLXI_2/FilterCount2: FTCPE port map (XLXI_2/FilterCount(2),XLXI_2/FilterCount_T(2),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_T(2) <= ((XLXI_2/_xor0001 AND XLXI_2/FilterCount(2))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(1)));
+</td></tr><tr><td>
+FTCPE_XLXI_2/FilterCount3: FTCPE port map (XLXI_2/FilterCount(3),XLXI_2/FilterCount_T(3),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_T(3) <= ((XLXI_2/_xor0001 AND XLXI_2/FilterCount(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(1) AND XLXI_2/FilterCount(2)));
+</td></tr><tr><td>
+FTCPE_XLXI_2/FilterCount4: FTCPE port map (XLXI_2/FilterCount(4),XLXI_2/FilterCount_T(4),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_T(4) <= ((XLXI_2/_xor0001 AND XLXI_2/FilterCount(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(1) AND XLXI_2/FilterCount(2) AND XLXI_2/FilterCount(3)));
+</td></tr><tr><td>
+FTCPE_XLXI_2/FilterCount5: FTCPE port map (XLXI_2/FilterCount(5),XLXI_2/FilterCount_T(5),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_T(5) <= ((XLXI_2/_xor0001 AND XLXI_2/FilterCount(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(1) AND XLXI_2/FilterCount(2) AND XLXI_2/FilterCount(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(4)));
+</td></tr><tr><td>
+FTCPE_XLXI_2/FilterCount6: FTCPE port map (XLXI_2/FilterCount(6),XLXI_2/FilterCount_T(6),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_T(6) <= ((XLXI_2/_xor0001 AND XLXI_2/FilterCount(6))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(1) AND XLXI_2/FilterCount(2) AND XLXI_2/FilterCount(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(4) AND XLXI_2/FilterCount(5)));
+</td></tr><tr><td>
+FTCPE_XLXI_2/FilterCount7: FTCPE port map (XLXI_2/FilterCount(7),XLXI_2/FilterCount_T(7),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_T(7) <= ((XLXI_2/_xor0001 AND XLXI_2/FilterCount(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(1) AND XLXI_2/FilterCount(2) AND XLXI_2/FilterCount(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(4) AND XLXI_2/FilterCount(5) AND XLXI_2/FilterCount(6)));
+</td></tr><tr><td>
+FTCPE_XLXI_2/FilterCount8: FTCPE port map (XLXI_2/FilterCount(8),XLXI_2/FilterCount_T(8),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_T(8) <= ((XLXI_2/_xor0001 AND XLXI_2/FilterCount(8))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(1) AND XLXI_2/FilterCount(2) AND XLXI_2/FilterCount(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(4) AND XLXI_2/FilterCount(5) AND XLXI_2/FilterCount(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(7)));
+</td></tr><tr><td>
+FTCPE_XLXI_2/FilterCount9: FTCPE port map (XLXI_2/FilterCount(9),XLXI_2/FilterCount_T(9),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_T(9) <= ((XLXI_2/_xor0001 AND XLXI_2/FilterCount(9))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(1) AND XLXI_2/FilterCount(2) AND XLXI_2/FilterCount(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(4) AND XLXI_2/FilterCount(5) AND XLXI_2/FilterCount(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(7) AND XLXI_2/FilterCount(8)));
+</td></tr><tr><td>
+FTCPE_XLXI_2/FilterCount10: FTCPE port map (XLXI_2/FilterCount(10),XLXI_2/FilterCount_T(10),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_T(10) <= ((XLXI_2/_xor0001 AND XLXI_2/FilterCount(10))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(1) AND XLXI_2/FilterCount(2) AND XLXI_2/FilterCount(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(4) AND XLXI_2/FilterCount(5) AND XLXI_2/FilterCount(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(7) AND XLXI_2/FilterCount(8) AND XLXI_2/FilterCount(9)));
+</td></tr><tr><td>
+FTCPE_XLXI_2/FilterCount11: FTCPE port map (XLXI_2/FilterCount(11),XLXI_2/FilterCount_T(11),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_T(11) <= ((XLXI_2/_xor0001 AND XLXI_2/FilterCount(11))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(10) AND XLXI_2/FilterCount(1) AND XLXI_2/FilterCount(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(3) AND XLXI_2/FilterCount(4) AND XLXI_2/FilterCount(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(6) AND XLXI_2/FilterCount(7) AND XLXI_2/FilterCount(8) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(9)));
+</td></tr><tr><td>
+FTCPE_XLXI_2/FilterCount12: FTCPE port map (XLXI_2/FilterCount(12),XLXI_2/FilterCount_T(12),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_T(12) <= ((XLXI_2/_xor0001 AND XLXI_2/FilterCount(12))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(10) AND XLXI_2/FilterCount(1) AND XLXI_2/FilterCount(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(3) AND XLXI_2/FilterCount(4) AND XLXI_2/FilterCount(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(6) AND XLXI_2/FilterCount(7) AND XLXI_2/FilterCount(8) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(9) AND XLXI_2/FilterCount(11)));
+</td></tr><tr><td>
+FTCPE_XLXI_2/FilterCount13: FTCPE port map (XLXI_2/FilterCount(13),XLXI_2/FilterCount_T(13),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_T(13) <= ((XLXI_2/_xor0001 AND XLXI_2/FilterCount(13))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(10) AND XLXI_2/FilterCount(1) AND XLXI_2/FilterCount(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(3) AND XLXI_2/FilterCount(4) AND XLXI_2/FilterCount(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(6) AND XLXI_2/FilterCount(7) AND XLXI_2/FilterCount(8) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(9) AND XLXI_2/FilterCount(11) AND XLXI_2/FilterCount(12)));
+</td></tr><tr><td>
+FTCPE_XLXI_2/FilterCount14: FTCPE port map (XLXI_2/FilterCount(14),XLXI_2/FilterCount_T(14),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_T(14) <= ((XLXI_2/_xor0001 AND XLXI_2/FilterCount(14))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(10) AND XLXI_2/FilterCount(1) AND XLXI_2/FilterCount(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(3) AND XLXI_2/FilterCount(4) AND XLXI_2/FilterCount(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(6) AND XLXI_2/FilterCount(7) AND XLXI_2/FilterCount(8) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(9) AND XLXI_2/FilterCount(11) AND XLXI_2/FilterCount(12) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(13)));
+</td></tr><tr><td>
+FTCPE_XLXI_2/FilterCount15: FTCPE port map (XLXI_2/FilterCount(15),XLXI_2/FilterCount_T(15),FilterClk,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_T(15) <= ((XLXI_2/_xor0001 AND XLXI_2/FilterCount(15))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(10) AND XLXI_2/FilterCount(1) AND XLXI_2/FilterCount(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(3) AND XLXI_2/FilterCount(4) AND XLXI_2/FilterCount(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(6) AND XLXI_2/FilterCount(7) AND XLXI_2/FilterCount(8) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(9) AND XLXI_2/FilterCount(11) AND XLXI_2/FilterCount(12) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(13) AND XLXI_2/FilterCount(14)));
+</td></tr><tr><td>
+FDCPE_XLXI_2/FilterInPrev: FDCPE port map (XLXI_2/FilterInPrev,Clk,FilterClk,'0','0','1');
+</td></tr><tr><td>
+</td></tr><tr><td>
+XLXI_2/_xor0001 <= ((Clk AND NOT XLXI_2/FilterInPrev)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT Clk AND XLXI_2/FilterInPrev));
+</td></tr><tr><td>
+</td></tr><tr><td>
+XLXI_3/_or00001 <= (NOT Load AND NOT Input(3));
+</td></tr><tr><td>
+</td></tr><tr><td>
+XLXI_3/_or00011 <= (NOT Load AND NOT Input(2));
+</td></tr><tr><td>
+</td></tr><tr><td>
+XLXI_3/_or00021 <= (NOT Load AND NOT Input(1));
+</td></tr><tr><td>
+</td></tr><tr><td>
+XLXI_3/_or00031 <= (NOT Load AND NOT Input(0));
+</td></tr><tr><td>
+FDCPE_XLXN_1: FDCPE port map (XLXN_1,Clk,FilterClk,'0','0',XLXN_1_CE);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_1_CE <= (NOT XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(10) AND NOT XLXI_2/FilterCount(1) AND NOT XLXI_2/FilterCount(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_2/FilterCount(3) AND NOT XLXI_2/FilterCount(4) AND XLXI_2/FilterCount(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_2/FilterCount(6) AND NOT XLXI_2/FilterCount(7) AND NOT XLXI_2/FilterCount(8) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(9) AND XLXI_2/FilterCount(11) AND NOT XLXI_2/FilterCount(12) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_2/FilterCount(13) AND XLXI_2/FilterCount(14) AND NOT XLXI_2/FilterCount(15));
+</td></tr><tr><td>
+</td></tr><tr><td>
+Register Legend:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FDCPE (Q,D,C,CLR,PRE,CE); 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FDDCPE (Q,D,C,CLR,PRE,CE); 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FTCPE (Q,D,C,CLR,PRE,CE); 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FTDCPE (Q,D,C,CLR,PRE,CE); 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LDCP  (Q,D,G,CLR,PRE); 
+</td></tr><tr><td>
+</td></tr>
+</table>
+<form><span class="pgRef"><table width="90%" align="center"><tr>
+<td align="left"><input type="button" onclick="javascript:parent.leftnav.showTop()" onmouseover="window.status='goto top of page'; return true;" onmouseout="window.status=''" value="back to top"></td>
+<td align="right"><input type="button" onclick="window.print()" onmouseover="window.status='print page'; return true;" onmouseout="window.status=''" value="print page"></td>
+</tr></table></span></form>
+</body></html>

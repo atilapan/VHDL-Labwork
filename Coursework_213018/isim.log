@@ -1,0 +1,29 @@
+ command line:
+   ./Regi_tbw_isim_beh.exe
+     -intstyle  ise
+     -ipchost  localhost
+     -ipcport  1410
+
+Thu Mar 09 00:20:02 2023
+
+Total Line Count = 752
+
+ Elaboration time 0 sec.
+
+ Estimate current memory usage 35.7908 Meg. 
+
+ Total signals 11
+ Total nets 15
+ Total signal drivers 6
+ Total blocks 7
+ Total primitive blocks 1
+ Total processes 4
+ntrace select -o on -n /Regi_tbw/clk 
+ntrace select -o on -n /Regi_tbw/input 
+ntrace select -o on -n /Regi_tbw/output 
+ntrace select -o on -n /Regi_tbw/reset 
+ntrace select -o on -n /Regi_tbw/load 
+ntrace start 
+run all 
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
