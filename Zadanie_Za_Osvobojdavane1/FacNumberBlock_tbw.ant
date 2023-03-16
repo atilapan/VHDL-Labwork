@@ -1,0 +1,156 @@
+--------------------------------------------------------------------------------
+-- Copyright (c) 1995-2003 Xilinx, Inc.
+-- All Right Reserved.
+--------------------------------------------------------------------------------
+--   ____  ____ 
+--  /   /\/   / 
+-- /___/  \  /    Vendor: Xilinx 
+-- \   \   \/     Version : 8.2i
+--  \   \         Application : ISE
+--  /   /         Filename : FacNumberBlock_tbw.ant
+-- /___/   /\     Timestamp : Fri Mar 17 00:09:30 2023
+-- \   \  /  \ 
+--  \___\/\___\ 
+--
+--Command: 
+--Design Name: FacNumberBlock_tbw
+--Device: Xilinx
+--
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+USE IEEE.STD_LOGIC_TEXTIO.ALL;
+USE STD.TEXTIO.ALL;
+
+ENTITY FacNumberBlock_tbw IS
+END FacNumberBlock_tbw;
+
+ARCHITECTURE testbench_arch OF FacNumberBlock_tbw IS
+    FILE RESULTS: TEXT OPEN WRITE_MODE IS "C:\XilinxProjects\Zadanie_Za_Osvobojdavane1\FacNumberBlock_tbw.ano";
+
+    COMPONENT FacNumberBlock
+        PORT (
+            Clk : In std_logic;
+            Reset : In std_logic;
+            NumberIn : In std_logic_vector (3 DownTo 0);
+            SegmentOut : Out std_logic_vector (7 DownTo 0);
+            Enable : Out std_logic
+        );
+    END COMPONENT;
+
+    SIGNAL Clk : std_logic := '0';
+    SIGNAL Reset : std_logic := '0';
+    SIGNAL NumberIn : std_logic_vector (3 DownTo 0) := "0000";
+    SIGNAL SegmentOut : std_logic_vector (7 DownTo 0) := "00000000";
+    SIGNAL Enable : std_logic := '0';
+
+    SHARED VARIABLE TX_ERROR : INTEGER := 0;
+    SHARED VARIABLE TX_OUT : LINE;
+
+    constant PERIOD : time := 100 ns;
+    constant DUTY_CYCLE : real := 0.5;
+    constant OFFSET : time := 0 ns;
+
+    BEGIN
+        UUT : FacNumberBlock
+        PORT MAP (
+            Clk => Clk,
+            Reset => Reset,
+            NumberIn => NumberIn,
+            SegmentOut => SegmentOut,
+            Enable => Enable
+        );
+
+        PROCESS    -- clock process for Clk
+        BEGIN
+            WAIT for OFFSET;
+            CLOCK_LOOP : LOOP
+                Clk <= '0';
+                WAIT FOR (PERIOD - (PERIOD * DUTY_CYCLE));
+                Clk <= '1';
+                WAIT FOR (PERIOD * DUTY_CYCLE);
+            END LOOP CLOCK_LOOP;
+        END PROCESS;
+
+        PROCESS    -- Annotation process for Clk
+            VARIABLE TX_TIME : INTEGER := 0;
+
+            PROCEDURE ANNOTATE_SegmentOut(
+                TX_TIME : INTEGER
+            ) IS
+                VARIABLE TX_STR : String(1 to 4096);
+                VARIABLE TX_LOC : LINE;
+            BEGIN
+                STD.TEXTIO.write(TX_LOC, string'("Annotate["));
+                STD.TEXTIO.write(TX_LOC, TX_TIME);
+                STD.TEXTIO.write(TX_LOC, string'(", SegmentOut, "));
+                IEEE.STD_LOGIC_TEXTIO.write(TX_LOC, SegmentOut);
+                STD.TEXTIO.write(TX_LOC, string'("]"));
+                TX_STR(TX_LOC.all'range) := TX_LOC.all;
+                STD.TEXTIO.writeline(RESULTS, TX_LOC);
+                STD.TEXTIO.Deallocate(TX_LOC);
+            END;
+            PROCEDURE ANNOTATE_Enable(
+                TX_TIME : INTEGER
+            ) IS
+                VARIABLE TX_STR : String(1 to 4096);
+                VARIABLE TX_LOC : LINE;
+            BEGIN
+                STD.TEXTIO.write(TX_LOC, string'("Annotate["));
+                STD.TEXTIO.write(TX_LOC, TX_TIME);
+                STD.TEXTIO.write(TX_LOC, string'(", Enable, "));
+                IEEE.STD_LOGIC_TEXTIO.write(TX_LOC, Enable);
+                STD.TEXTIO.write(TX_LOC, string'("]"));
+                TX_STR(TX_LOC.all'range) := TX_LOC.all;
+                STD.TEXTIO.writeline(RESULTS, TX_LOC);
+                STD.TEXTIO.Deallocate(TX_LOC);
+            END;
+        BEGIN
+            WAIT for 1 fs;
+            ANNOTATE_SegmentOut(0);
+            ANNOTATE_Enable(0);
+            WAIT for OFFSET;
+            TX_TIME := TX_TIME + 0;
+            ANNO_LOOP : LOOP
+                --Rising Edge
+                WAIT for 60 ns;
+                TX_TIME := TX_TIME + 60;
+                ANNOTATE_SegmentOut(TX_TIME);
+                ANNOTATE_Enable(TX_TIME);
+                WAIT for 40 ns;
+                TX_TIME := TX_TIME + 40;
+            END LOOP ANNO_LOOP;
+        END PROCESS;
+
+        PROCESS
+            BEGIN
+                -- -------------  Current Time:  40ns
+                WAIT FOR 40 ns;
+                Reset <= '1';
+                NumberIn <= "0000";
+                -- -------------------------------------
+                -- -------------  Current Time:  140ns
+                WAIT FOR 100 ns;
+                NumberIn <= "0001";
+                -- -------------------------------------
+                -- -------------  Current Time:  240ns
+                WAIT FOR 100 ns;
+                NumberIn <= "0001";
+                -- -------------------------------------
+                -- -------------  Current Time:  340ns
+                WAIT FOR 100 ns;
+                NumberIn <= "1001";
+                -- -------------------------------------
+                WAIT FOR 760 ns;
+
+                STD.TEXTIO.write(TX_OUT, string'("Total[]"));
+                STD.TEXTIO.writeline(RESULTS, TX_OUT);
+                ASSERT (FALSE) REPORT
+                    "Success! Simulation for annotation completed"
+                    SEVERITY FAILURE;
+            END PROCESS;
+
+    END testbench_arch;
+

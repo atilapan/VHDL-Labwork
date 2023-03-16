@@ -1,0 +1,8 @@
+[Inputs]
+Clk
+Reset
+=NumberIn[3:0]=
+[Outputs]
+Enable
+=SegmentOut[7:0]=
+[BiDir]

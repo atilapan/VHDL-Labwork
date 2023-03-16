@@ -1,0 +1,3 @@
+MODULE FacNumberBlock_tbw
+SUBMODULE FacNumberBlock
+INSTANCE UUT

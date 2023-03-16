@@ -1,0 +1,371 @@
+MDF Database:  version 1.0
+MDF_INFO | top | XC2C256-6-TQ144
+MACROCELL | 1 | 11 | Enable_MC
+ATTRIBUTES | 1074004738 | 0
+INPUTS | 0
+EQ | 1 | 
+   Enable = Gnd;	// (0 pt, 0 inp)
+
+MACROCELL | 0 | 12 | SegmentOut<0>_MC
+ATTRIBUTES | 159646470 | 0
+INPUTS | 4 | NumberIn<2>  | NumberIn<1>  | NumberIn<3>  | NumberIn<0>
+INPUTP | 4 | 12 | 10 | 208 | 8
+LCT | 1 | 2 | Internal_Name
+EQ | 4 | 
+   !SegmentOut<0> := !NumberIn<2> & NumberIn<1> & !NumberIn<3>
+	# !NumberIn<2> & !NumberIn<1> & !NumberIn<0>;	// (2 pt, 4 inp)
+    SegmentOut<0>.CLK = !(XLXN_1);	// CTC	(1 pt, 1 inp)
+   SegmentOut<0>.AP = !Reset;	// GSR	(0 pt, 0 inp)
+GLOBALS | 1 | 1 | Reset
+
+MACROCELL | 1 | 6 | XLXN_1_MC
+ATTRIBUTES | 2155905856 | 0
+INPUTS | 18 | Clk  | XLXI_4/FilterCount<0>  | XLXI_4/_xor0001  | XLXI_4/FilterCount<10>  | XLXI_4/FilterCount<1>  | XLXI_4/FilterCount<2>  | XLXI_4/FilterCount<3>  | XLXI_4/FilterCount<4>  | XLXI_4/FilterCount<5>  | XLXI_4/FilterCount<6>  | XLXI_4/FilterCount<7>  | XLXI_4/FilterCount<8>  | XLXI_4/FilterCount<9>  | XLXI_4/FilterCount<11>  | XLXI_4/FilterCount<12>  | XLXI_4/FilterCount<13>  | XLXI_4/FilterCount<14>  | XLXI_4/FilterCount<15>
+INPUTMC | 17 | 0 | 15 | 1 | 5 | 0 | 2 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7
+INPUTP | 1 | 217
+EQ | 8 | 
+   XLXN_1 := Clk;	// (1 pt, 1 inp)
+   XLXN_1.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+    XLXN_1.CE = !XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<10> & !XLXI_4/FilterCount<1> & !XLXI_4/FilterCount<2> & 
+	!XLXI_4/FilterCount<3> & !XLXI_4/FilterCount<4> & XLXI_4/FilterCount<5> & 
+	!XLXI_4/FilterCount<6> & !XLXI_4/FilterCount<7> & !XLXI_4/FilterCount<8> & 
+	XLXI_4/FilterCount<9> & XLXI_4/FilterCount<11> & !XLXI_4/FilterCount<12> & 
+	!XLXI_4/FilterCount<13> & XLXI_4/FilterCount<14> & !XLXI_4/FilterCount<15>;	// (1 pt, 17 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 0 | 15 | XLXI_4/FilterCount<0>_MC
+ATTRIBUTES | 2155905792 | 0
+OUTPUTMC | 17 | 0 | 15 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0 | 0 | 2 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 2 | XLXI_4/FilterCount<0>  | XLXI_4/_xor0001
+INPUTMC | 2 | 0 | 15 | 1 | 5
+EQ | 2 | 
+   XLXI_4/FilterCount<0> := !XLXI_4/FilterCount<0> & !XLXI_4/_xor0001;	// (1 pt, 2 inp)
+   XLXI_4/FilterCount<0>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 1 | 5 | XLXI_4/_xor0001_MC
+ATTRIBUTES | 536871680 | 0
+OUTPUTMC | 17 | 0 | 15 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0 | 0 | 2 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 2 | Clk  | XLXI_4/FilterInPrev
+INPUTMC | 1 | 0 | 3
+INPUTP | 1 | 217
+EQ | 2 | 
+   XLXI_4/_xor0001 = Clk & !XLXI_4/FilterInPrev
+	# !Clk & XLXI_4/FilterInPrev;	// (2 pt, 2 inp)
+
+MACROCELL | 0 | 3 | XLXI_4/FilterInPrev_MC
+ATTRIBUTES | 2155905028 | 4
+OUTPUTMC | 1 | 1 | 5
+INPUTS | 0 
+EQ | 4 | 
+   
+// Direct Input Register
+XLXI_4/FilterInPrev := Clk;	// (0 pt, 0 inp)
+   XLXI_4/FilterInPrev.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 0 | 2 | XLXI_4/FilterCount<10>_MC
+ATTRIBUTES | 2151711488 | 0
+OUTPUTMC | 7 | 0 | 2 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 12 | XLXI_4/_xor0001  | XLXI_4/FilterCount<10>  | XLXI_4/FilterCount<0>  | XLXI_4/FilterCount<1>  | XLXI_4/FilterCount<2>  | XLXI_4/FilterCount<3>  | XLXI_4/FilterCount<4>  | XLXI_4/FilterCount<5>  | XLXI_4/FilterCount<6>  | XLXI_4/FilterCount<7>  | XLXI_4/FilterCount<8>  | XLXI_4/FilterCount<9>
+INPUTMC | 12 | 1 | 5 | 0 | 2 | 0 | 15 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0
+EQ | 6 | 
+   XLXI_4/FilterCount<10>.T := XLXI_4/_xor0001 & XLXI_4/FilterCount<10>
+	# XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<1> & XLXI_4/FilterCount<2> & XLXI_4/FilterCount<3> & 
+	XLXI_4/FilterCount<4> & XLXI_4/FilterCount<5> & XLXI_4/FilterCount<6> & 
+	XLXI_4/FilterCount<7> & XLXI_4/FilterCount<8> & XLXI_4/FilterCount<9>;	// (2 pt, 12 inp)
+   XLXI_4/FilterCount<10>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 0 | 14 | XLXI_4/FilterCount<1>_MC
+ATTRIBUTES | 2155905792 | 0
+OUTPUTMC | 16 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0 | 0 | 2 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 3 | XLXI_4/FilterCount<0>  | XLXI_4/_xor0001  | XLXI_4/FilterCount<1>
+INPUTMC | 3 | 0 | 15 | 1 | 5 | 0 | 14
+EQ | 5 | 
+   XLXI_4/FilterCount<1> := XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	!XLXI_4/FilterCount<1>
+	# !XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<1>;	// (2 pt, 3 inp)
+   XLXI_4/FilterCount<1>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 0 | 10 | XLXI_4/FilterCount<2>_MC
+ATTRIBUTES | 2151711488 | 0
+OUTPUTMC | 15 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0 | 0 | 2 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 4 | XLXI_4/_xor0001  | XLXI_4/FilterCount<2>  | XLXI_4/FilterCount<0>  | XLXI_4/FilterCount<1>
+INPUTMC | 4 | 1 | 5 | 0 | 10 | 0 | 15 | 0 | 14
+EQ | 4 | 
+   XLXI_4/FilterCount<2>.T := XLXI_4/_xor0001 & XLXI_4/FilterCount<2>
+	# XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<1>;	// (2 pt, 4 inp)
+   XLXI_4/FilterCount<2>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 0 | 9 | XLXI_4/FilterCount<3>_MC
+ATTRIBUTES | 2151711488 | 0
+OUTPUTMC | 14 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0 | 0 | 2 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 5 | XLXI_4/_xor0001  | XLXI_4/FilterCount<3>  | XLXI_4/FilterCount<0>  | XLXI_4/FilterCount<1>  | XLXI_4/FilterCount<2>
+INPUTMC | 5 | 1 | 5 | 0 | 9 | 0 | 15 | 0 | 14 | 0 | 10
+EQ | 4 | 
+   XLXI_4/FilterCount<3>.T := XLXI_4/_xor0001 & XLXI_4/FilterCount<3>
+	# XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<1> & XLXI_4/FilterCount<2>;	// (2 pt, 5 inp)
+   XLXI_4/FilterCount<3>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 0 | 8 | XLXI_4/FilterCount<4>_MC
+ATTRIBUTES | 2151711488 | 0
+OUTPUTMC | 13 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0 | 0 | 2 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 6 | XLXI_4/_xor0001  | XLXI_4/FilterCount<4>  | XLXI_4/FilterCount<0>  | XLXI_4/FilterCount<1>  | XLXI_4/FilterCount<2>  | XLXI_4/FilterCount<3>
+INPUTMC | 6 | 1 | 5 | 0 | 8 | 0 | 15 | 0 | 14 | 0 | 10 | 0 | 9
+EQ | 4 | 
+   XLXI_4/FilterCount<4>.T := XLXI_4/_xor0001 & XLXI_4/FilterCount<4>
+	# XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<1> & XLXI_4/FilterCount<2> & XLXI_4/FilterCount<3>;	// (2 pt, 6 inp)
+   XLXI_4/FilterCount<4>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 0 | 7 | XLXI_4/FilterCount<5>_MC
+ATTRIBUTES | 2151711488 | 0
+OUTPUTMC | 12 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0 | 0 | 2 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 7 | XLXI_4/_xor0001  | XLXI_4/FilterCount<5>  | XLXI_4/FilterCount<0>  | XLXI_4/FilterCount<1>  | XLXI_4/FilterCount<2>  | XLXI_4/FilterCount<3>  | XLXI_4/FilterCount<4>
+INPUTMC | 7 | 1 | 5 | 0 | 7 | 0 | 15 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8
+EQ | 5 | 
+   XLXI_4/FilterCount<5>.T := XLXI_4/_xor0001 & XLXI_4/FilterCount<5>
+	# XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<1> & XLXI_4/FilterCount<2> & XLXI_4/FilterCount<3> & 
+	XLXI_4/FilterCount<4>;	// (2 pt, 7 inp)
+   XLXI_4/FilterCount<5>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 0 | 6 | XLXI_4/FilterCount<6>_MC
+ATTRIBUTES | 2151711488 | 0
+OUTPUTMC | 11 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0 | 0 | 2 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 8 | XLXI_4/_xor0001  | XLXI_4/FilterCount<6>  | XLXI_4/FilterCount<0>  | XLXI_4/FilterCount<1>  | XLXI_4/FilterCount<2>  | XLXI_4/FilterCount<3>  | XLXI_4/FilterCount<4>  | XLXI_4/FilterCount<5>
+INPUTMC | 8 | 1 | 5 | 0 | 6 | 0 | 15 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7
+EQ | 5 | 
+   XLXI_4/FilterCount<6>.T := XLXI_4/_xor0001 & XLXI_4/FilterCount<6>
+	# XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<1> & XLXI_4/FilterCount<2> & XLXI_4/FilterCount<3> & 
+	XLXI_4/FilterCount<4> & XLXI_4/FilterCount<5>;	// (2 pt, 8 inp)
+   XLXI_4/FilterCount<6>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 0 | 4 | XLXI_4/FilterCount<7>_MC
+ATTRIBUTES | 2151711488 | 0
+OUTPUTMC | 10 | 0 | 4 | 0 | 1 | 0 | 0 | 0 | 2 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 9 | XLXI_4/_xor0001  | XLXI_4/FilterCount<7>  | XLXI_4/FilterCount<0>  | XLXI_4/FilterCount<1>  | XLXI_4/FilterCount<2>  | XLXI_4/FilterCount<3>  | XLXI_4/FilterCount<4>  | XLXI_4/FilterCount<5>  | XLXI_4/FilterCount<6>
+INPUTMC | 9 | 1 | 5 | 0 | 4 | 0 | 15 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6
+EQ | 5 | 
+   XLXI_4/FilterCount<7>.T := XLXI_4/_xor0001 & XLXI_4/FilterCount<7>
+	# XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<1> & XLXI_4/FilterCount<2> & XLXI_4/FilterCount<3> & 
+	XLXI_4/FilterCount<4> & XLXI_4/FilterCount<5> & XLXI_4/FilterCount<6>;	// (2 pt, 9 inp)
+   XLXI_4/FilterCount<7>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 0 | 1 | XLXI_4/FilterCount<8>_MC
+ATTRIBUTES | 2151711488 | 0
+OUTPUTMC | 9 | 0 | 1 | 0 | 0 | 0 | 2 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 10 | XLXI_4/_xor0001  | XLXI_4/FilterCount<8>  | XLXI_4/FilterCount<0>  | XLXI_4/FilterCount<1>  | XLXI_4/FilterCount<2>  | XLXI_4/FilterCount<3>  | XLXI_4/FilterCount<4>  | XLXI_4/FilterCount<5>  | XLXI_4/FilterCount<6>  | XLXI_4/FilterCount<7>
+INPUTMC | 10 | 1 | 5 | 0 | 1 | 0 | 15 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4
+EQ | 6 | 
+   XLXI_4/FilterCount<8>.T := XLXI_4/_xor0001 & XLXI_4/FilterCount<8>
+	# XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<1> & XLXI_4/FilterCount<2> & XLXI_4/FilterCount<3> & 
+	XLXI_4/FilterCount<4> & XLXI_4/FilterCount<5> & XLXI_4/FilterCount<6> & 
+	XLXI_4/FilterCount<7>;	// (2 pt, 10 inp)
+   XLXI_4/FilterCount<8>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 0 | 0 | XLXI_4/FilterCount<9>_MC
+ATTRIBUTES | 2151711488 | 0
+OUTPUTMC | 8 | 0 | 0 | 0 | 2 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 11 | XLXI_4/_xor0001  | XLXI_4/FilterCount<9>  | XLXI_4/FilterCount<0>  | XLXI_4/FilterCount<1>  | XLXI_4/FilterCount<2>  | XLXI_4/FilterCount<3>  | XLXI_4/FilterCount<4>  | XLXI_4/FilterCount<5>  | XLXI_4/FilterCount<6>  | XLXI_4/FilterCount<7>  | XLXI_4/FilterCount<8>
+INPUTMC | 11 | 1 | 5 | 0 | 0 | 0 | 15 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1
+EQ | 6 | 
+   XLXI_4/FilterCount<9>.T := XLXI_4/_xor0001 & XLXI_4/FilterCount<9>
+	# XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<1> & XLXI_4/FilterCount<2> & XLXI_4/FilterCount<3> & 
+	XLXI_4/FilterCount<4> & XLXI_4/FilterCount<5> & XLXI_4/FilterCount<6> & 
+	XLXI_4/FilterCount<7> & XLXI_4/FilterCount<8>;	// (2 pt, 11 inp)
+   XLXI_4/FilterCount<9>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 1 | 15 | XLXI_4/FilterCount<11>_MC
+ATTRIBUTES | 2151711488 | 0
+OUTPUTMC | 6 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 13 | XLXI_4/_xor0001  | XLXI_4/FilterCount<11>  | XLXI_4/FilterCount<0>  | XLXI_4/FilterCount<10>  | XLXI_4/FilterCount<1>  | XLXI_4/FilterCount<2>  | XLXI_4/FilterCount<3>  | XLXI_4/FilterCount<4>  | XLXI_4/FilterCount<5>  | XLXI_4/FilterCount<6>  | XLXI_4/FilterCount<7>  | XLXI_4/FilterCount<8>  | XLXI_4/FilterCount<9>
+INPUTMC | 13 | 1 | 5 | 1 | 15 | 0 | 15 | 0 | 2 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0
+EQ | 7 | 
+   XLXI_4/FilterCount<11>.T := XLXI_4/_xor0001 & XLXI_4/FilterCount<11>
+	# XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<10> & XLXI_4/FilterCount<1> & XLXI_4/FilterCount<2> & 
+	XLXI_4/FilterCount<3> & XLXI_4/FilterCount<4> & XLXI_4/FilterCount<5> & 
+	XLXI_4/FilterCount<6> & XLXI_4/FilterCount<7> & XLXI_4/FilterCount<8> & 
+	XLXI_4/FilterCount<9>;	// (2 pt, 13 inp)
+   XLXI_4/FilterCount<11>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 1 | 10 | XLXI_4/FilterCount<12>_MC
+ATTRIBUTES | 2151711488 | 0
+OUTPUTMC | 5 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 14 | XLXI_4/_xor0001  | XLXI_4/FilterCount<12>  | XLXI_4/FilterCount<0>  | XLXI_4/FilterCount<10>  | XLXI_4/FilterCount<1>  | XLXI_4/FilterCount<2>  | XLXI_4/FilterCount<3>  | XLXI_4/FilterCount<4>  | XLXI_4/FilterCount<5>  | XLXI_4/FilterCount<6>  | XLXI_4/FilterCount<7>  | XLXI_4/FilterCount<8>  | XLXI_4/FilterCount<9>  | XLXI_4/FilterCount<11>
+INPUTMC | 14 | 1 | 5 | 1 | 10 | 0 | 15 | 0 | 2 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0 | 1 | 15
+EQ | 7 | 
+   XLXI_4/FilterCount<12>.T := XLXI_4/_xor0001 & XLXI_4/FilterCount<12>
+	# XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<10> & XLXI_4/FilterCount<1> & XLXI_4/FilterCount<2> & 
+	XLXI_4/FilterCount<3> & XLXI_4/FilterCount<4> & XLXI_4/FilterCount<5> & 
+	XLXI_4/FilterCount<6> & XLXI_4/FilterCount<7> & XLXI_4/FilterCount<8> & 
+	XLXI_4/FilterCount<9> & XLXI_4/FilterCount<11>;	// (2 pt, 14 inp)
+   XLXI_4/FilterCount<12>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 1 | 9 | XLXI_4/FilterCount<13>_MC
+ATTRIBUTES | 2151711488 | 0
+OUTPUTMC | 4 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 15 | XLXI_4/_xor0001  | XLXI_4/FilterCount<13>  | XLXI_4/FilterCount<0>  | XLXI_4/FilterCount<10>  | XLXI_4/FilterCount<1>  | XLXI_4/FilterCount<2>  | XLXI_4/FilterCount<3>  | XLXI_4/FilterCount<4>  | XLXI_4/FilterCount<5>  | XLXI_4/FilterCount<6>  | XLXI_4/FilterCount<7>  | XLXI_4/FilterCount<8>  | XLXI_4/FilterCount<9>  | XLXI_4/FilterCount<11>  | XLXI_4/FilterCount<12>
+INPUTMC | 15 | 1 | 5 | 1 | 9 | 0 | 15 | 0 | 2 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0 | 1 | 15 | 1 | 10
+EQ | 7 | 
+   XLXI_4/FilterCount<13>.T := XLXI_4/_xor0001 & XLXI_4/FilterCount<13>
+	# XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<10> & XLXI_4/FilterCount<1> & XLXI_4/FilterCount<2> & 
+	XLXI_4/FilterCount<3> & XLXI_4/FilterCount<4> & XLXI_4/FilterCount<5> & 
+	XLXI_4/FilterCount<6> & XLXI_4/FilterCount<7> & XLXI_4/FilterCount<8> & 
+	XLXI_4/FilterCount<9> & XLXI_4/FilterCount<11> & XLXI_4/FilterCount<12>;	// (2 pt, 15 inp)
+   XLXI_4/FilterCount<13>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 1 | 8 | XLXI_4/FilterCount<14>_MC
+ATTRIBUTES | 2151711488 | 0
+OUTPUTMC | 3 | 1 | 8 | 1 | 7 | 1 | 6
+INPUTS | 16 | XLXI_4/_xor0001  | XLXI_4/FilterCount<14>  | XLXI_4/FilterCount<0>  | XLXI_4/FilterCount<10>  | XLXI_4/FilterCount<1>  | XLXI_4/FilterCount<2>  | XLXI_4/FilterCount<3>  | XLXI_4/FilterCount<4>  | XLXI_4/FilterCount<5>  | XLXI_4/FilterCount<6>  | XLXI_4/FilterCount<7>  | XLXI_4/FilterCount<8>  | XLXI_4/FilterCount<9>  | XLXI_4/FilterCount<11>  | XLXI_4/FilterCount<12>  | XLXI_4/FilterCount<13>
+INPUTMC | 16 | 1 | 5 | 1 | 8 | 0 | 15 | 0 | 2 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0 | 1 | 15 | 1 | 10 | 1 | 9
+EQ | 8 | 
+   XLXI_4/FilterCount<14>.T := XLXI_4/_xor0001 & XLXI_4/FilterCount<14>
+	# XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<10> & XLXI_4/FilterCount<1> & XLXI_4/FilterCount<2> & 
+	XLXI_4/FilterCount<3> & XLXI_4/FilterCount<4> & XLXI_4/FilterCount<5> & 
+	XLXI_4/FilterCount<6> & XLXI_4/FilterCount<7> & XLXI_4/FilterCount<8> & 
+	XLXI_4/FilterCount<9> & XLXI_4/FilterCount<11> & XLXI_4/FilterCount<12> & 
+	XLXI_4/FilterCount<13>;	// (2 pt, 16 inp)
+   XLXI_4/FilterCount<14>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 1 | 7 | XLXI_4/FilterCount<15>_MC
+ATTRIBUTES | 2151711488 | 0
+OUTPUTMC | 2 | 1 | 7 | 1 | 6
+INPUTS | 17 | XLXI_4/_xor0001  | XLXI_4/FilterCount<15>  | XLXI_4/FilterCount<0>  | XLXI_4/FilterCount<10>  | XLXI_4/FilterCount<1>  | XLXI_4/FilterCount<2>  | XLXI_4/FilterCount<3>  | XLXI_4/FilterCount<4>  | XLXI_4/FilterCount<5>  | XLXI_4/FilterCount<6>  | XLXI_4/FilterCount<7>  | XLXI_4/FilterCount<8>  | XLXI_4/FilterCount<9>  | XLXI_4/FilterCount<11>  | XLXI_4/FilterCount<12>  | XLXI_4/FilterCount<13>  | XLXI_4/FilterCount<14>
+INPUTMC | 17 | 1 | 5 | 1 | 7 | 0 | 15 | 0 | 2 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8
+EQ | 8 | 
+   XLXI_4/FilterCount<15>.T := XLXI_4/_xor0001 & XLXI_4/FilterCount<15>
+	# XLXI_4/FilterCount<0> & !XLXI_4/_xor0001 & 
+	XLXI_4/FilterCount<10> & XLXI_4/FilterCount<1> & XLXI_4/FilterCount<2> & 
+	XLXI_4/FilterCount<3> & XLXI_4/FilterCount<4> & XLXI_4/FilterCount<5> & 
+	XLXI_4/FilterCount<6> & XLXI_4/FilterCount<7> & XLXI_4/FilterCount<8> & 
+	XLXI_4/FilterCount<9> & XLXI_4/FilterCount<11> & XLXI_4/FilterCount<12> & 
+	XLXI_4/FilterCount<13> & XLXI_4/FilterCount<14>;	// (2 pt, 17 inp)
+   XLXI_4/FilterCount<15>.CLK  =  FilterClk;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | FilterClk
+
+MACROCELL | 0 | 13 | SegmentOut<1>_MC
+ATTRIBUTES | 159646470 | 0
+INPUTS | 4 | NumberIn<2>  | NumberIn<3>  | NumberIn<1>  | NumberIn<0>
+INPUTP | 4 | 12 | 208 | 10 | 8
+LCT | 1 | 2 | Internal_Name
+EQ | 4 | 
+   !SegmentOut<1> := !NumberIn<2> & !NumberIn<3>
+	# !NumberIn<2> & !NumberIn<1> & !NumberIn<0>;	// (2 pt, 4 inp)
+    SegmentOut<1>.CLK = !(XLXN_1);	// CTC	(1 pt, 1 inp)
+   SegmentOut<1>.AP = !Reset;	// GSR	(0 pt, 0 inp)
+GLOBALS | 1 | 1 | Reset
+
+MACROCELL | 1 | 2 | SegmentOut<2>_MC
+ATTRIBUTES | 159646470 | 0
+INPUTS | 4 | NumberIn<2>  | NumberIn<1>  | NumberIn<0>  | NumberIn<3>
+INPUTP | 4 | 12 | 10 | 8 | 208
+LCT | 1 | 2 | Internal_Name
+EQ | 4 | 
+   !SegmentOut<2> := !NumberIn<2> & !NumberIn<1> & !NumberIn<0>
+	# !NumberIn<2> & NumberIn<0> & !NumberIn<3>;	// (2 pt, 4 inp)
+    SegmentOut<2>.CLK = !(XLXN_1);	// CTC	(1 pt, 1 inp)
+   SegmentOut<2>.AP = !Reset;	// GSR	(0 pt, 0 inp)
+GLOBALS | 1 | 1 | Reset
+
+MACROCELL | 1 | 3 | SegmentOut<3>_MC
+ATTRIBUTES | 159646470 | 0
+INPUTS | 4 | NumberIn<2>  | NumberIn<1>  | NumberIn<3>  | NumberIn<0>
+INPUTP | 4 | 12 | 10 | 208 | 8
+LCT | 1 | 2 | Internal_Name
+EQ | 4 | 
+   !SegmentOut<3> := !NumberIn<2> & NumberIn<1> & !NumberIn<3>
+	# !NumberIn<2> & !NumberIn<1> & !NumberIn<0>;	// (2 pt, 4 inp)
+    SegmentOut<3>.CLK = !(XLXN_1);	// CTC	(1 pt, 1 inp)
+   SegmentOut<3>.AP = !Reset;	// GSR	(0 pt, 0 inp)
+GLOBALS | 1 | 1 | Reset
+
+MACROCELL | 1 | 4 | SegmentOut<4>_MC
+ATTRIBUTES | 159646470 | 0
+INPUTS | 4 | NumberIn<2>  | NumberIn<1>  | NumberIn<0>  | NumberIn<3>
+INPUTP | 4 | 12 | 10 | 8 | 208
+LCT | 1 | 2 | Internal_Name
+EQ | 5 | 
+   !SegmentOut<4> := !NumberIn<2> & !NumberIn<1> & !NumberIn<0>
+	# !NumberIn<2> & NumberIn<1> & !NumberIn<0> & 
+	!NumberIn<3>;	// (2 pt, 4 inp)
+    SegmentOut<4>.CLK = !(XLXN_1);	// CTC	(1 pt, 1 inp)
+   SegmentOut<4>.AP = !Reset;	// GSR	(0 pt, 0 inp)
+GLOBALS | 1 | 1 | Reset
+
+MACROCELL | 0 | 11 | SegmentOut<5>_MC
+ATTRIBUTES | 159646470 | 0
+INPUTS | 3 | NumberIn<2>  | NumberIn<1>  | NumberIn<0>
+INPUTP | 3 | 12 | 10 | 8
+LCT | 1 | 2 | Internal_Name
+EQ | 3 | 
+   !SegmentOut<5> := !NumberIn<2> & !NumberIn<1> & !NumberIn<0>;	// (1 pt, 3 inp)
+    SegmentOut<5>.CLK = !(XLXN_1);	// CTC	(1 pt, 1 inp)
+   SegmentOut<5>.AP = !Reset;	// GSR	(0 pt, 0 inp)
+GLOBALS | 1 | 1 | Reset
+
+MACROCELL | 1 | 0 | SegmentOut<6>_MC
+ATTRIBUTES | 176423682 | 0
+INPUTS | 3 | NumberIn<2>  | NumberIn<1>  | NumberIn<3>
+INPUTP | 3 | 12 | 10 | 208
+LCT | 1 | 2 | Internal_Name
+EQ | 3 | 
+   SegmentOut<6> := !NumberIn<2> & !NumberIn<1> & !NumberIn<3>;	// (1 pt, 3 inp)
+    SegmentOut<6>.CLK = !(XLXN_1);	// CTC	(1 pt, 1 inp)
+   SegmentOut<6>.AR = !Reset;	// GSR	(0 pt, 0 inp)
+GLOBALS | 1 | 4 | Reset
+
+MACROCELL | 0 | 5 | SegmentOut<7>_MC
+ATTRIBUTES | 159646470 | 0
+INPUTS | 0
+LCT | 1 | 2 | Internal_Name
+EQ | 3 | 
+   !SegmentOut<7> := Gnd;	// (0 pt, 0 inp)
+    SegmentOut<7>.CLK = !(XLXN_1);	// CTC	(1 pt, 1 inp)
+   SegmentOut<7>.AP = !Reset;	// GSR	(0 pt, 0 inp)
+GLOBALS | 1 | 1 | Reset
+
+PIN | FilterClk | 8192 | 16 | LVCMOS18 | 50 | 18 | 0 | 3 | 0 | 15 | 0 | 14 | 0 | 10 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 0 | 0 | 2 | 1 | 15 | 1 | 10 | 1 | 9 | 1 | 8 | 1 | 7 | 1 | 6
+PIN | NumberIn<0> | 64 | 16 | LVCMOS18 | 8 | 6 | 0 | 12 | 0 | 13 | 1 | 2 | 1 | 3 | 1 | 4 | 0 | 11
+PIN | NumberIn<1> | 64 | 16 | LVCMOS18 | 10 | 7 | 0 | 12 | 0 | 13 | 1 | 2 | 1 | 3 | 1 | 4 | 0 | 11 | 1 | 0
+PIN | NumberIn<2> | 64 | 16 | LVCMOS18 | 12 | 7 | 0 | 12 | 0 | 13 | 1 | 2 | 1 | 3 | 1 | 4 | 0 | 11 | 1 | 0
+PIN | NumberIn<3> | 64 | 16 | LVCMOS18 | 208 | 6 | 0 | 12 | 0 | 13 | 1 | 2 | 1 | 3 | 1 | 4 | 1 | 0
+PIN | Reset | 65536 | 16 | LVCMOS18 | 218 | 8 | 0 | 12 | 0 | 13 | 1 | 2 | 1 | 3 | 1 | 4 | 0 | 11 | 1 | 0 | 0 | 5
+PIN | Clk | 64 | 16 | LVCMOS18 | 217 | 3 | 1 | 6 | 1 | 5 | 0 | 3
+PIN | Enable | 536871040 | 0 | LVCMOS18 | 7
+PIN | SegmentOut<0> | 536871040 | 0 | LVCMOS18 | 212
+PIN | SegmentOut<1> | 536871040 | 0 | LVCMOS18 | 211
+PIN | SegmentOut<2> | 536871040 | 0 | LVCMOS18 | 3
+PIN | SegmentOut<3> | 536871040 | 0 | LVCMOS18 | 4
+PIN | SegmentOut<4> | 536871040 | 0 | LVCMOS18 | 5
+PIN | SegmentOut<5> | 536871040 | 0 | LVCMOS18 | 213
+PIN | SegmentOut<6> | 536871040 | 0 | LVCMOS18 | 1
+PIN | SegmentOut<7> | 536871040 | 0 | LVCMOS18 | 214
