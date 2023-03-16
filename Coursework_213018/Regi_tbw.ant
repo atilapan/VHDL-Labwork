@@ -8,7 +8,7 @@
 -- \   \   \/     Version : 8.2i
 --  \   \         Application : ISE
 --  /   /         Filename : Regi_tbw.ant
--- /___/   /\     Timestamp : Thu Mar 09 00:20:01 2023
+-- /___/   /\     Timestamp : Mon Mar 13 13:32:38 2023
 -- \   \  /  \ 
 --  \___\/\___\ 
 --
@@ -28,7 +28,7 @@ ENTITY Regi_tbw IS
 END Regi_tbw;
 
 ARCHITECTURE testbench_arch OF Regi_tbw IS
-    FILE RESULTS: TEXT OPEN WRITE_MODE IS "C:\XilinxProjects\Coursework_213018\Regi_tbw.ano";
+    FILE RESULTS: TEXT OPEN WRITE_MODE IS "C:\Temp\tp\25A\213018\Coursework_213018\Regi_tbw.ano";
 
     COMPONENT Regi
         PORT (

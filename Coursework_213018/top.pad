@@ -1,7 +1,7 @@
 Release 8.1i - Fit I.31
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 3- 9-2023  6:50PM
+ 3-13-2023  1:16PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -59,7 +59,7 @@ P38|FilterClk|GCK|I/O/GCK2||LVCMOS18|1||FAST||||
 P39|SegmentOut<0>|O|I/O/DGE|OUTPUT|LVCMOS18|1||FAST||||
 P40|KPR||I/O|||1|||||||
 P41|KPR||I/O|||1|||||||
-P42|KPR||I/O|||1|||||||
+P42|Enable|O|I/O|OUTPUT|LVCMOS18|1||FAST||||
 P43|KPR||I/O|||1|||||||
 P44|KPR||I/O|||1|||||||
 P45|KPR||I/O|||1|||||||

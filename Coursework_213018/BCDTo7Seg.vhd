@@ -30,15 +30,15 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity BCDTo7Seg is
     Port ( BCDIn : in  STD_LOGIC_VECTOR (3 downto 0);
            SegmentOut : out  STD_LOGIC_VECTOR (7 downto 0);
-			  Clk : in  STD_LOGIC);
+			  Enable: out STD_LOGIC);
 end BCDTo7Seg;
 
 architecture Behavioral of BCDTo7Seg is
 
 begin
-	process(Clk, BCDIn)
+	process(BCDIn)
 	begin 
-		if (Clk'event and Clk = '0') then
+		--if (Clk'event and Clk = '0') then
 			case BCDIn is
 				when "0000" => SegmentOut <= "11000000";
 				when "0001" => SegmentOut <= "11111001";
@@ -58,7 +58,9 @@ begin
 				when "1111" => SegmentOut <= "10001110";
 				when others => NULL;
 			end case;
-		end if;
+		--end if;
 	end process;
+	
+	Enable <= '0';
 end Behavioral;
 

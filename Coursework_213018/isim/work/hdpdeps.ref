@@ -1,0 +1,15 @@
+V3 7
+FL C:/Temp/tp/25A/213018/Coursework_213018/Regi.vhd 2023/03/13.13:05:49 I.31
+EN work/Regi 1678705646            FL C:/Temp/tp/25A/213018/Coursework_213018/Regi.vhd \
+      PB ieee/std_logic_1164 1147840849 PB ieee/std_logic_arith 1147840851 \
+      PB ieee/STD_LOGIC_UNSIGNED 1147840857
+AR work/Regi/Behavioral 1678705647 FL C:/Temp/tp/25A/213018/Coursework_213018/Regi.vhd \
+      EN work/Regi 1678705646
+FL C:/Temp/tp/25A/213018/Coursework_213018/Regi_tbw.vhw 2023/03/13.13:07:24 I.31
+EN work/Regi_tbw 1678705648        FL C:/Temp/tp/25A/213018/Coursework_213018/Regi_tbw.vhw \
+      PB ieee/std_logic_1164 1147840849 PB ieee/std_logic_arith 1147840851 \
+      PB ieee/STD_LOGIC_UNSIGNED 1147840857 PB ieee/STD_LOGIC_TEXTIO 1147840859 \
+      PB std/textio 1147840824
+AR work/Regi_tbw/testbench_arch 1678705649 \
+      FL C:/Temp/tp/25A/213018/Coursework_213018/Regi_tbw.vhw EN work/Regi_tbw 1678705648 \
+      CP Regi           PB ieee/STD_LOGIC_TEXTIO 1147840859

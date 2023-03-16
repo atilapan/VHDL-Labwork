@@ -6,26 +6,64 @@
 ********** Mapped Logic **********
 </td></tr><tr><td>
 </td></tr><tr><td>
-N_PZ_106 <= (Load AND Reset);
-</td></tr><tr><td>
-FDCPE_Output0: FDCPE port map (Output(0),'0',XLXN_1,Output_CLR(0),Output_PRE(0),'1');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_CLR(0) <= (NOT Load AND NOT Input(0));
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_PRE(0) <= (NOT XLXI_3/_or00031 AND NOT N_PZ_106);
-</td></tr><tr><td>
-FDCPE_Output1: FDCPE port map (Output(1),Output(0),XLXN_1,Output_CLR(1),Output_PRE(1),'1');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_CLR(1) <= (NOT Load AND NOT Input(1));
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_PRE(1) <= (NOT N_PZ_106 AND NOT XLXI_3/_or00021);
-</td></tr><tr><td>
-FDCPE_Output2: FDCPE port map (Output(2),Output(1),XLXN_1,Output_CLR(2),Output_PRE(2),'1');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_CLR(2) <= (NOT Load AND NOT Input(2));
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_PRE(2) <= (NOT N_PZ_106 AND NOT XLXI_3/_or00011);
+Enable <= '0';
 </td></tr><tr><td>
 </td></tr><tr><td>
-Output(3) <= Output(3)_BUFR;
+SegmentOut(0) <= (XLXI_3/Internal(1) AND NOT XLXI_3/Internal(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XOR ((XLXI_3/Internal(1) AND NOT XLXI_3/Internal(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_3/Internal(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_3/Internal(0) AND XLXI_3/Internal(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_3/Internal(3)));
 </td></tr><tr><td>
-FDCPE_Output3_BUFR: FDCPE port map (Output(3)_BUFR,Output(2),XLXN_1,Output_CLR(3)_BUFR,Output_PRE(3)_BUFR,'1');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_CLR(3)_BUFR <= (NOT Load AND NOT Input(3));
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output_PRE(3)_BUFR <= (NOT N_PZ_106 AND NOT XLXI_3/_or00001);
+</td></tr><tr><td>
+SegmentOut(1) <= (XLXI_3/Internal(0) AND NOT XLXI_3/Internal(2))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XOR ((XLXI_3/Internal(1) AND NOT XLXI_3/Internal(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_3/Internal(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_3/Internal(1) AND NOT XLXI_3/Internal(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_3/Internal(3)));
+</td></tr><tr><td>
+</td></tr><tr><td>
+SegmentOut(2) <= ((NOT XLXI_3/Internal(1) AND NOT XLXI_3/Internal(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_3/Internal(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_3/Internal(0) AND NOT XLXI_3/Internal(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_3/Internal(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_3/Internal(1) AND XLXI_3/Internal(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_3/Internal(2) AND XLXI_3/Internal(3)));
+</td></tr><tr><td>
+</td></tr><tr><td>
+SegmentOut(3) <= ((NOT XLXI_3/Internal(1) AND NOT XLXI_3/Internal(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_3/Internal(2))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_3/Internal(1) AND XLXI_3/Internal(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_3/Internal(2) AND XLXI_3/Internal(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_3/Internal(1) AND NOT XLXI_3/Internal(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_3/Internal(2) AND XLXI_3/Internal(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_3/Internal(1) AND XLXI_3/Internal(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_3/Internal(2) AND NOT XLXI_3/Internal(3)));
+</td></tr><tr><td>
+</td></tr><tr><td>
+SegmentOut(4) <= ((NOT XLXI_3/Internal(0) AND XLXI_3/Internal(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_3/Internal(1) AND NOT XLXI_3/Internal(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_3/Internal(2))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_3/Internal(1) AND NOT XLXI_3/Internal(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_3/Internal(3)));
+</td></tr><tr><td>
+</td></tr><tr><td>
+SegmentOut(5) <= (NOT XLXI_3/Internal(0) AND XLXI_3/Internal(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XOR ((XLXI_3/Internal(1) AND NOT XLXI_3/Internal(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_3/Internal(2))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_3/Internal(1) AND XLXI_3/Internal(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_3/Internal(2) AND XLXI_3/Internal(3)));
+</td></tr><tr><td>
+</td></tr><tr><td>
+SegmentOut(6) <= ((XLXI_3/Internal(1) AND XLXI_3/Internal(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_3/Internal(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (XLXI_3/Internal(1) AND XLXI_3/Internal(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_3/Internal(2) AND NOT XLXI_3/Internal(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT XLXI_3/Internal(1) AND NOT XLXI_3/Internal(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_3/Internal(2) AND XLXI_3/Internal(3)));
+</td></tr><tr><td>
+</td></tr><tr><td>
+SegmentOut(7) <= NOT ('0');
 </td></tr><tr><td>
 FDCPE_XLXI_2/FilterCount0: FDCPE port map (XLXI_2/FilterCount(0),XLXI_2/FilterCount_D(0),FilterClk,'0','0','1');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_2/FilterCount_D(0) <= (NOT XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001);
@@ -138,20 +176,36 @@ FDCPE_XLXI_2/FilterInPrev: FDCPE port map (XLXI_2/FilterInPrev,Clk,FilterClk,'0'
 XLXI_2/_xor0001 <= ((Clk AND NOT XLXI_2/FilterInPrev)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT Clk AND XLXI_2/FilterInPrev));
 </td></tr><tr><td>
+FDCPE_XLXI_3/Internal0: FDCPE port map (XLXI_3/Internal(0),NOT '0',XLXN_7,XLXI_3/Internal_CLR(0),NOT XLXI_3/_or0003,'1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_3/Internal_CLR(0) <= (Reset AND NOT Load AND Input(0));
 </td></tr><tr><td>
-XLXI_3/_or00001 <= (NOT Load AND NOT Input(3));
+FDCPE_XLXI_3/Internal1: FDCPE port map (XLXI_3/Internal(1),XLXI_3/Internal(0),XLXN_7,XLXI_3/Internal_CLR(1),NOT XLXI_3/_or0002,'1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_3/Internal_CLR(1) <= (Reset AND NOT Load AND Input(1));
+</td></tr><tr><td>
+FDCPE_XLXI_3/Internal2: FDCPE port map (XLXI_3/Internal(2),XLXI_3/Internal(1),XLXN_7,XLXI_3/Internal_CLR(2),NOT XLXI_3/_or0001,'1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_3/Internal_CLR(2) <= (Reset AND NOT Load AND Input(2));
+</td></tr><tr><td>
+FDCPE_XLXI_3/Internal3: FDCPE port map (XLXI_3/Internal(3),XLXI_3/Internal(2),XLXN_7,XLXI_3/Internal_CLR(3),NOT XLXI_3/_or0000,'1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXI_3/Internal_CLR(3) <= (Reset AND NOT Load AND Input(3));
 </td></tr><tr><td>
 </td></tr><tr><td>
-XLXI_3/_or00011 <= (NOT Load AND NOT Input(2));
+XLXI_3/_or0000 <= ((Reset AND Load)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (Reset AND Input(3)));
 </td></tr><tr><td>
 </td></tr><tr><td>
-XLXI_3/_or00021 <= (NOT Load AND NOT Input(1));
+XLXI_3/_or0001 <= ((Reset AND Load)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (Reset AND Input(2)));
 </td></tr><tr><td>
 </td></tr><tr><td>
-XLXI_3/_or00031 <= (NOT Load AND NOT Input(0));
+XLXI_3/_or0002 <= ((Reset AND Load)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (Reset AND Input(1)));
 </td></tr><tr><td>
-FDCPE_XLXN_1: FDCPE port map (XLXN_1,Clk,FilterClk,'0','0',XLXN_1_CE);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_1_CE <= (NOT XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
+</td></tr><tr><td>
+XLXI_3/_or0003 <= ((Reset AND Load)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (Reset AND Input(0)));
+</td></tr><tr><td>
+FDCPE_XLXN_7: FDCPE port map (XLXN_7,Clk,FilterClk,'0','0',XLXN_7_CE);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XLXN_7_CE <= (NOT XLXI_2/FilterCount(0) AND NOT XLXI_2/_xor0001 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	XLXI_2/FilterCount(10) AND NOT XLXI_2/FilterCount(1) AND NOT XLXI_2/FilterCount(2) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_2/FilterCount(3) AND NOT XLXI_2/FilterCount(4) AND XLXI_2/FilterCount(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT XLXI_2/FilterCount(6) AND NOT XLXI_2/FilterCount(7) AND NOT XLXI_2/FilterCount(8) AND 

@@ -36,16 +36,16 @@ entity Regi is
 end Regi;
 
 architecture Behavioral of Regi is
-signal Internal : STD_LOGIC_VECTOR (3 downto 0) := (others  => '0');
+signal Internal : STD_LOGIC_VECTOR (3 downto 0); --:= (others  => '0');
 
 begin
 
-process(Clk, Reset, Load, Input, Internal)
+process(Clk, Reset, Load)
 begin
-	if(Load = '0') then
+	if(Reset = '0') then
+		Internal <= (others => '1');
+	elsif(Load = '0') then
 		Internal <= not Input;
-	elsif(Reset = '0') then
-		Internal <= (others => '0');
 	elsif(Clk'event and Clk = '0') then
 		Internal <= Internal (2 downto 0) & '1';
 	end if;

@@ -5,7 +5,7 @@
 <design name='top'/>
 <rptdir name='top'/>
 <xilinx path='C:/Xilinx;'/>
-<projDir path='C:\XilinxProjects\Coursework_213018'/>
+<projDir path='C:\Temp\tp\25A\213018\Coursework_213018'/>
 <xslDir path='chipviewer/data/xsl'/>
 <fileDir path='/chipviewer/data/html'/>
 <dataFile file='index.htm'/>
@@ -107,6 +107,7 @@
     <output file='inputleft.htm'/>
   </xslFile>
   <xslFile file='printPins.xsl'>
+    <param name='appletOn' value='0'/>
     <output file='pins.htm'/>
   </xslFile>
   <xslFile file='wait.xsl'>
@@ -128,6 +129,7 @@
     <param name='unmapLog' value='0'/>
     <param name='unmapIn' value='0'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='maplogic_00.htm'/>
     <param name='sortType' value='1'/>
     <param name='mapLog' value='1'/>
@@ -135,6 +137,7 @@
     <param name='unmapLog' value='0'/>
     <param name='unmapIn' value='0'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='maplogic_01.htm'/>
     <param name='sortType' value='2'/>
     <param name='mapLog' value='1'/>
@@ -142,6 +145,7 @@
     <param name='unmapLog' value='0'/>
     <param name='unmapIn' value='0'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='maplogic_02.htm'/>
     <param name='sortType' value='0'/>
     <param name='mapLog' value='0'/>
@@ -149,6 +153,7 @@
     <param name='unmapLog' value='0'/>
     <param name='unmapIn' value='0'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='mapinput_00.htm'/>
     <param name='sortType' value='1'/>
     <param name='mapLog' value='0'/>
@@ -156,6 +161,7 @@
     <param name='unmapLog' value='0'/>
     <param name='unmapIn' value='0'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='mapinput_01.htm'/>
     <param name='sortType' value='2'/>
     <param name='mapLog' value='0'/>
@@ -163,6 +169,7 @@
     <param name='unmapLog' value='0'/>
     <param name='unmapIn' value='0'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='mapinput_02.htm'/>
   </xslFile>
   <xslFile file='fbsum.xsl'>
@@ -173,66 +180,82 @@
     <param name='fb' value='FB1'/>
     <param name='type' value='1'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB1.htm'/>
     <param name='fb' value='FB2'/>
     <param name='type' value='3'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB2.htm'/>
     <param name='fb' value='FB3'/>
     <param name='type' value='3'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB3.htm'/>
     <param name='fb' value='FB4'/>
     <param name='type' value='3'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB4.htm'/>
     <param name='fb' value='FB5'/>
     <param name='type' value='3'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB5.htm'/>
     <param name='fb' value='FB6'/>
     <param name='type' value='3'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB6.htm'/>
     <param name='fb' value='FB7'/>
     <param name='type' value='3'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB7.htm'/>
     <param name='fb' value='FB8'/>
     <param name='type' value='3'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB8.htm'/>
     <param name='fb' value='FB9'/>
     <param name='type' value='3'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB9.htm'/>
     <param name='fb' value='FB10'/>
     <param name='type' value='3'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB10.htm'/>
     <param name='fb' value='FB11'/>
     <param name='type' value='3'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB11.htm'/>
     <param name='fb' value='FB12'/>
     <param name='type' value='3'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB12.htm'/>
     <param name='fb' value='FB13'/>
     <param name='type' value='3'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB13.htm'/>
     <param name='fb' value='FB14'/>
     <param name='type' value='3'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB14.htm'/>
     <param name='fb' value='FB15'/>
     <param name='type' value='3'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB15.htm'/>
     <param name='fb' value='FB16'/>
     <param name='type' value='2'/>
     <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
     <output file='fbs_FB16.htm'/>
   </xslFile>
 </xmlFile>
@@ -263,5 +286,4 @@
 </xmlFileGroup>
 <rptFile file='top.rpt'/>
 <timFile file='top.tim'/>
-<appFile/>
 </document>

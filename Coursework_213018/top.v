@@ -7,11 +7,11 @@
 // \   \   \/     Version : 8.2i
 //  \   \         Application : sch2verilog
 //  /   /         Filename : top.vf
-// /___/   /\     Timestamp : 03/09/2023 18:43:03
+// /___/   /\     Timestamp : 03/13/2023 12:52:33
 // \   \  /  \ 
 //  \___\/\___\ 
 //
-//Command: C:\Xilinx\bin\nt\sch2verilog.exe -intstyle ise -family xbr -w C:/XilinxProjects/Coursework_213018/top.sch top.vf
+//Command: C:\Xilinx\bin\nt\sch2verilog.exe -intstyle ise -family xbr -w C:/Temp/tp/25A/213018/Coursework_213018/top.sch top.vf
 //Design Name: top
 //Device: xbr
 //Purpose:
@@ -25,6 +25,7 @@ module top(Clk,
            Input, 
            Load, 
            Reset, 
+           Enable, 
            SegmentOut);
 
     input Clk;
@@ -32,20 +33,22 @@ module top(Clk,
     input [3:0] Input;
     input Load;
     input Reset;
+   output Enable;
    output [7:0] SegmentOut;
    
-   wire XLXN_1;
    wire [3:0] XLXN_5;
+   wire XLXN_6;
    
    Filter XLXI_2 (.FilterClk(FilterClk), 
                   .FilterIn(Clk), 
-                  .FilterOut(XLXN_1));
-   Regi XLXI_3 (.Clk(XLXN_1), 
+                  .FilterOut(XLXN_6));
+   Regi XLXI_3 (.Clk(XLXN_6), 
                 .Input(Input[3:0]), 
                 .Load(Load), 
                 .Reset(Reset), 
                 .Output(XLXN_5[3:0]));
    BCDTo7Seg XLXI_4 (.BCDIn(XLXN_5[3:0]), 
-                     .Clk(XLXN_1), 
+                     .Clk(XLXN_6), 
+                     .Enable(Enable), 
                      .SegmentOut(SegmentOut[7:0]));
 endmodule

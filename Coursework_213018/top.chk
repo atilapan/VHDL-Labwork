@@ -7,8 +7,8 @@
 GCLK2: 2=FilterClk.p
 ----------------- B l o c k 0 ------------------
 PLApt(31/56), Fanin(17/38), Clk(1/3), Bct(0/4), Pin(4/6), Mcell(16/16)
-PLApts[31/56] 53 54 42 52 43 55 44 56 45 57 46 58 47 59 48 60 49 61 37 62 38 63 39 64 40 65 41 66 50 67 () () 
-              () () () () () () () () () () () () () () () () () () () () () () () 51
+PLApts[31/56] 60 61 49 59 50 62 51 63 52 64 53 65 54 66 55 67 56 68 44 69 45 70 46 71 47 72 48 73 57 74 () () 
+              () () () () () () () () () () () () () () () () () () () () () () () 58
 Fanins[17] XLXI_2/FilterCount<0>.n XLXI_2/FilterCount<10>.n XLXI_2/FilterCount<11>.n XLXI_2/FilterCount<12>.n 
            XLXI_2/FilterCount<13>.n XLXI_2/FilterCount<14>.n XLXI_2/FilterCount<15>.n XLXI_2/FilterCount<1>.n 
            XLXI_2/FilterCount<2>.n XLXI_2/FilterCount<3>.n XLXI_2/FilterCount<4>.n XLXI_2/FilterCount<5>.n 
@@ -35,42 +35,39 @@ Signal[20] [ 0: XLXI_2/FilterCount<9>(145)  ][ 1: XLXI_2/FilterCount<8>(146)  ][
            XLXI_2/FilterCount<10>(158) Input<2>(137)  ][ 14: XLXI_2/FilterCount<1>(159)  ][ 15:  
            XLXI_2/FilterCount<0>(160)  ]
 ----------------- B l o c k 1 ------------------
-PLApt(19/56), Fanin(33/38), Clk(1/3), Bct(3/4), Pin(3/8), Mcell(11/16)
-PLApts[19/56] 11 32 1 35 34 71 5 36 () () () () () 68 () () 14 () () () () () () () () 7 () () 3 () () 4 () 
-              () 6 () () 5 70 () 9 () () () () () () () () () () () () 6 () 13
-Fanins[33] N_PZ_143.n XLXI_2/FilterCount<0>.n XLXI_2/FilterCount<10>.n XLXI_2/FilterCount<11>.n 
-           XLXI_2/FilterCount<12>.n XLXI_2/FilterCount<13>.n XLXI_2/FilterCount<14>.n 
-           XLXI_2/FilterCount<15>.n XLXI_2/FilterCount<1>.n XLXI_2/FilterCount<2>.n XLXI_2/FilterCount<3>.n 
-           XLXI_2/FilterCount<4>.n XLXI_2/FilterCount<5>.n XLXI_2/FilterCount<6>.n XLXI_2/FilterCount<7>.n 
-           XLXI_2/FilterCount<8>.n XLXI_2/FilterCount<9>.n XLXI_2/FilterInPrev.n XLXI_2/_xor0001.n 
-           XLXI_3/Internal<0>.n XLXI_3/Internal<1>.n XLXI_3/Internal<2>.n XLXI_3/Internal<3>.n 
-           XLXI_3/_or00011.n XLXI_3/_or00021.n XLXN_1.n Clk.p Input<0>.p Input<1>.p Input<2>.p Input<3>.p 
-           Load.p Reset.p
+PLApt(19/56), Fanin(32/38), Clk(1/3), Bct(3/4), Pin(3/8), Mcell(10/16)
+PLApts[19/56] 15 36 3 6 38 9 41 8 4 10 1 39 40 () () () 18 () () () () () () () () 75 () () () () () () () () 
+              () () () () 7 () 13 () () () () () () () () () () () () 43 () 17
+Fanins[32] XLXI_2/FilterCount<0>.n XLXI_2/FilterCount<10>.n XLXI_2/FilterCount<11>.n XLXI_2/FilterCount<12>.n 
+           XLXI_2/FilterCount<13>.n XLXI_2/FilterCount<14>.n XLXI_2/FilterCount<15>.n XLXI_2/FilterCount<1>.n 
+           XLXI_2/FilterCount<2>.n XLXI_2/FilterCount<3>.n XLXI_2/FilterCount<4>.n XLXI_2/FilterCount<5>.n 
+           XLXI_2/FilterCount<6>.n XLXI_2/FilterCount<7>.n XLXI_2/FilterCount<8>.n XLXI_2/FilterCount<9>.n 
+           XLXI_2/FilterInPrev.n XLXI_2/_xor0001.n XLXI_3/Internal<0>.n XLXI_3/Internal<1>.n 
+           XLXI_3/Internal<2>.n XLXI_3/Internal<3>.n XLXI_3/_or0001.n XLXI_3/_or0002.n XLXN_7.n Clk.p 
+           Input<0>.p Input<1>.p Input<2>.p Input<3>.p Load.p Reset.p
 clk[1] FilterClk 
-CTC: (pt=34) XLXN_1 ;
-CTR: (pt=71) XLXI_3/_or00021' N_PZ_143' ;
-CTS: (pt=5) Load' Input<2>' ;
+CTC: (pt=38) XLXN_7 ;
+CTR: (pt=9) Reset Load' Input<1> ;
+CTS: (pt=41) XLXI_3/_or0001' ;
 CTE: 
 vref: [0]
-Signal[13] [SegmentOut<1>(163),SegmentOut<1>(3)] [Load(5)] [XLXI_2/FilterInPrev,Clk(7)]  
-           [XLXI_3/Internal<1>(176)] [XLXI_3/Internal<2>(171)] [XLXI_3/_or00011(170)] [XLXI_3/_or00021(169)]  
-           [N_PZ_143(168)] [XLXI_3/_or00001(167)] [XLXI_3/_or00031(166)] [XLXN_1(162)]  
-           [XLXI_2/_xor0001(175)] 
-Signal[13] [ 0: (2)  ][ 1: XLXN_1(162)  ][ 2: SegmentOut<1>(163) SegmentOut<1>(3)  ][ 3: (4)  ][ 4: Load(5)  
-            ][ 5: XLXI_3/_or00031(166)  ][ 6: XLXI_3/_or00001(167)  ][ 7: N_PZ_143(168)  ][ 8:  
-           XLXI_3/_or00021(169)  ][ 9: XLXI_3/_or00011(170)  ][ 10: XLXI_3/Internal<2>(171)  ][ 11: (6)  ] 
-           [ 12: XLXI_2/FilterInPrev(173) Clk(7)  ][ 13: (9)  ][ 14: XLXI_2/_xor0001(175) (10)  ][ 15:  
-           XLXI_3/Internal<1>(176)  ]
+Signal[12] [SegmentOut<1>(163),SegmentOut<1>(3)] [Load(5)] [XLXI_2/FilterInPrev,Clk(7)]  
+           [XLXI_3/Internal<1>(176)] [XLXI_3/Internal<2>(171)] [XLXI_3/_or0001(170)] [XLXI_3/_or0002(169)]  
+           [XLXI_3/_or0000(168)] [XLXI_3/_or0003(167)] [XLXN_7(166)] [XLXI_2/_xor0001(162)] 
+Signal[12] [ 0: (2)  ][ 1: XLXI_2/_xor0001(162)  ][ 2: SegmentOut<1>(163) SegmentOut<1>(3)  ][ 3: (4)  ][ 4:  
+           Load(5)  ][ 5: XLXN_7(166)  ][ 6: XLXI_3/_or0003(167)  ][ 7: XLXI_3/_or0000(168)  ][ 8:  
+           XLXI_3/_or0002(169)  ][ 9: XLXI_3/_or0001(170)  ][ 10: XLXI_3/Internal<2>(171)  ][ 11: (6)  ] 
+           [ 12: XLXI_2/FilterInPrev(173) Clk(7)  ][ 13: (9)  ][ 14: (10)  ][ 15: XLXI_3/Internal<1>(176)  ]
 ----------------- B l o c k 2 ------------------
 PLApt(6/56), Fanin(8/38), Clk(0/3), Bct(3/4), Pin(1/6), Mcell(2/16)
-PLApts[6/51] () () () () 34 72 3 () () () () () () () () () () () () () () () () () () () () () () () () () 
-             () () () () () () () () () () () () 69 () 8 () () () 7
-Fanins[ 8] N_PZ_143.n XLXI_3/Internal<2>.n XLXI_3/_or00001.n XLXI_3/_or00031.n XLXN_1.n Input<0>.p Input<3>.p 
-           Load.p
+PLApts[6/51] () () () () 38 11 42 () () () () () () () () () () () () () () () () () () () () () () () () () 
+             () () () () () () () () () () () () 5 () 12 () () () 76
+Fanins[ 8] XLXI_3/Internal<2>.n XLXI_3/_or0000.n XLXI_3/_or0003.n XLXN_7.n Input<0>.p Input<3>.p Load.p 
+           Reset.p
 clk[0] 
-CTC: (pt=34) XLXN_1 ;
-CTR: (pt=72) XLXI_3/_or00031' N_PZ_143' ;
-CTS: (pt=3) Load' Input<3>' ;
+CTC: (pt=38) XLXN_7 ;
+CTR: (pt=11) Reset Load' Input<0> ;
+CTS: (pt=42) XLXI_3/_or0000' ;
 CTE: 
 vref: [0]
 Signal[ 3] [Input<3>(135)] [XLXI_3/Internal<0>(191)] [XLXI_3/Internal<3>(189)] 
@@ -79,11 +76,11 @@ Signal[ 3] [ 0: (136)  ][ 1: Input<3>(135)  ][ 2: (134)  ][ 3:  ][ 4: (133)  ][ 
            XLXI_3/Internal<0>(191)  ][ 15: (131)  ]
 ----------------- B l o c k 3 ------------------
 ----------------- B l o c k 4 ------------------
-PLApt(8/56), Fanin(5/38), Clk(0/3), Bct(1/4), Pin(2/5), Mcell(2/16)
-PLApts[8/8] 16 20 27 30 34 11 21 25
-Fanins[ 5] XLXI_3/Internal<0>.n XLXI_3/Internal<1>.n XLXI_3/Internal<2>.n XLXI_3/Internal<3>.n XLXN_1.n
+PLApt(7/56), Fanin(4/38), Clk(0/3), Bct(0/4), Pin(2/5), Mcell(2/16)
+PLApts[7/7] 20 24 31 34 15 25 29
+Fanins[ 4] XLXI_3/Internal<0>.n XLXI_3/Internal<1>.n XLXI_3/Internal<2>.n XLXI_3/Internal<3>.n
 clk[0] 
-CTC: (pt=34) XLXN_1 ;
+CTC: 
 CTR: 
 CTS: 
 CTE: 
@@ -93,26 +90,27 @@ Signal[ 2] [ 0:  ][ 1: (33)  ][ 2:  ][ 3: SegmentOut<3>(212) SegmentOut<3>(32)  
            SegmentOut<4>(214) SegmentOut<4>(30)  ][ 6:  ][ 7:  ][ 8:  ][ 9:  ][ 10:  ][ 11:  ][ 12:  ][ 13:  
            (28)  ][ 14:  ][ 15:  ]
 ----------------- B l o c k 5 ------------------
-PLApt(7/56), Fanin(5/38), Clk(0/3), Bct(1/4), Pin(3/8), Mcell(2/16)
-PLApts[7/44] 11 23 12 15 34 18 () () () () () () () () () () () () () () () () () () () () () () () () () () 
-             () () () () () () () () () () () 24
-Fanins[ 5] XLXI_3/Internal<0>.n XLXI_3/Internal<1>.n XLXI_3/Internal<2>.n XLXI_3/Internal<3>.n XLXN_1.n
+PLApt(6/56), Fanin(4/38), Clk(0/3), Bct(0/4), Pin(4/8), Mcell(3/16)
+PLApts[6/44] 15 27 16 19 22 () () () () () () () () () () () () () () () () () () () () () () () () () () () 
+             () () () () () () () () () () () 28
+Fanins[ 4] XLXI_3/Internal<0>.n XLXI_3/Internal<1>.n XLXI_3/Internal<2>.n XLXI_3/Internal<3>.n
 clk[0] 
-CTC: (pt=34) XLXN_1 ;
+CTC: 
 CTR: 
 CTS: 
 CTE: 
 vref: [0]
-Signal[ 3] [SegmentOut<0>(236),SegmentOut<0>(39)] [SegmentOut<2>(226),SegmentOut<2>(35)] [FilterClk(38)] 
-Signal[ 3] [ 0: (34)  ][ 1: SegmentOut<2>(226) SegmentOut<2>(35)  ][ 2:  ][ 3: FilterClk(38)  ][ 4:  ][ 5:  ] 
+Signal[ 4] [SegmentOut<0>(236),SegmentOut<0>(39)] [SegmentOut<2>(226),SegmentOut<2>(35)]  
+           [Enable(239),Enable(42)] [FilterClk(38)] 
+Signal[ 4] [ 0: (34)  ][ 1: SegmentOut<2>(226) SegmentOut<2>(35)  ][ 2:  ][ 3: FilterClk(38)  ][ 4:  ][ 5:  ] 
            [ 6:  ][ 7:  ][ 8:  ][ 9:  ][ 10:  ][ 11: SegmentOut<0>(236) SegmentOut<0>(39)  ][ 12: (40)  ] 
-           [ 13: (41)  ][ 14: (42)  ][ 15: (43)  ]
+           [ 13: (41)  ][ 14: Enable(239) Enable(42)  ][ 15: (43)  ]
 ----------------- B l o c k 6 ------------------
-PLApt(7/56), Fanin(5/38), Clk(0/3), Bct(1/4), Pin(3/8), Mcell(3/16)
-PLApts[7/23] 18 26 10 17 34 31 () () () () () () () () () () () () () () () () 21
-Fanins[ 5] XLXI_3/Internal<0>.n XLXI_3/Internal<1>.n XLXI_3/Internal<2>.n XLXI_3/Internal<3>.n XLXN_1.n
+PLApt(6/56), Fanin(4/38), Clk(0/3), Bct(0/4), Pin(3/8), Mcell(3/16)
+PLApts[6/23] 22 30 14 21 35 () () () () () () () () () () () () () () () () () 25
+Fanins[ 4] XLXI_3/Internal<0>.n XLXI_3/Internal<1>.n XLXI_3/Internal<2>.n XLXI_3/Internal<3>.n
 clk[0] 
-CTC: (pt=34) XLXN_1 ;
+CTC: 
 CTR: 
 CTS: 
 CTE: 

@@ -2,15 +2,15 @@
    ./Regi_tbw_isim_beh.exe
      -intstyle  ise
      -ipchost  localhost
-     -ipcport  1410
+     -ipcport  1070
 
-Thu Mar 09 00:20:02 2023
+Mon Mar 13 13:07:31 2023
 
 Total Line Count = 752
 
  Elaboration time 0 sec.
 
- Estimate current memory usage 35.7908 Meg. 
+ Estimate current memory usage 34.8774 Meg. 
 
  Total signals 11
  Total nets 15
