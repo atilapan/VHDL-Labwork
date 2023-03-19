@@ -60,7 +60,7 @@ begin
 						when "0111" => SegmentOut <= "11111000"; -- "7"
 						when "1000" => SegmentOut <= "10000000"; -- "8"
 						when "1001" => SegmentOut <= "10010000"; -- "9"
-						when others => SegmentOut <= "10010000"; -- "-"
+						when others => SegmentOut <= "10111111"; -- "-"
 					end case;
 					exit;
 				else
